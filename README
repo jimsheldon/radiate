@@ -1,0 +1,21 @@
+radiate - utomated internet radio
+
+Currentlyt this project is very inflexible and undocumented.  I'm writing it
+for an internet radio station that I'm working on.
+
+What each file does:
+
+generate_playlist.sh: Generates a playlist from a directory.
+
+getsong.sh: Read by station.liq at every song change.
+
+logsong.sh: Log meta data to a file.
+
+show_end.sh: Kicked off by cron at the end of every show.
+
+stats.sh: Generate statistics from logs, kicked off by cron.
+
+watch_dirs.sh: Watch directories for file additions.
+
+station.liq: Liquidsoap script.
+
