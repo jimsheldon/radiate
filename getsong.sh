@@ -37,7 +37,7 @@ fi
 if [ -n "$SHOWNAME" ]; then
   FULLSHOWNAME=$(getent passwd $SHOWNAME | cut -d ':' -f 5 | awk -F, '{print $1}')
 else
-  FULLSHOWNAME="Metal Injection Radio"
+  FULLSHOWNAME="Fallback"
 fi
 if [ ! -e $HOME/playlists/defaultids ]; then
   ls $HOME/ids/default*.mp3 | sort -R > $HOME/playlists/defaultids
