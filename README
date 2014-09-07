@@ -1,7 +1,6 @@
 radiate - automated internet radio
 
-Currently this project is very inflexible and undocumented.  I'm writing it
-for an internet radio station that I'm working on.
+This software has been running metalinjection.fm 24/7 since March of 2012!
 
 What each file does:
 
@@ -19,3 +18,16 @@ watch_dirs.sh: Watch directories for file additions.
 
 station.liq: Liquidsoap script.
 
+telnet_command.sh: Used when running commands over liquidsoap's telnet 
+interface
+
+amazonlink.php: Uses https://github.com/Exeu/Amazon-ECS-PHP-Library to 
+generate links to amazon's MP3 store for milinks.sh
+
+milinks.sh: Generates milinks.txt which is included in the metalinjection.fm
+listening page.
+
+cron entries:
+0 0,3,6,9,12,15,18,21 * * *                     <path to>/show_end.sh
+5,10,15,20,25,30,35,40,45,50,55 * * * *         <path to>/watch_dirs.sh
+0,10,20,30,40,50 * * * *                        <path to>/stats.sh

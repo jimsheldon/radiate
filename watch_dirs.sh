@@ -21,11 +21,11 @@ while read line; do
   [ "$ONAIR" = "$SHOW" ] && continue
   PLIST=$HOME/playlists/${SHOW}week${THISWEEK}
   if [ ! -e $PLIST ]; then
-    generate_playlist.sh $SHOWDIR
+    $HOME/bin/generate_playlist.sh $SHOWDIR
   else
     NEWFILES=$(find $WEEKDIR -type f -newer $PLIST | wc -l | awk '{print $1}')
     if [ $NEWFILES -gt 0 ]; then
-      generate_playlist.sh $SHOWDIR
+      $HOME/bin/generate_playlist.sh $SHOWDIR
     fi
   fi
 done < $SHOWDIRS

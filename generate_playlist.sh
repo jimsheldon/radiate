@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash  
 
 TMPDIR=/tmp/$$playlist
 mkdir $TMPDIR
@@ -6,7 +6,12 @@ mkdir $TMPDIR
 SHOWDIR=$1
 SHOW=${SHOWDIR##*/}
 THISWEEK=$(date +%W)
-WEEKDIR="$SHOWDIR/week${THISWEEK}"
+DAYOFWEEK=$(date +%A)
+if [ -d $SHOWDIR/week${THISWEEK}/${DAYOFWEEK} ]; then
+  WEEKDIR="$SHOWDIR/week${THISWEEK}/${DAYOFWEEK}"
+else
+  WEEKDIR="$SHOWDIR/week${THISWEEK}"
+fi
 [ -e $WEEKDIR ] || WEEKDIR="$SHOWDIR/default"
 [ -e $WEEKDIR ] || exit 1
 IDDIR=$HOME/ids

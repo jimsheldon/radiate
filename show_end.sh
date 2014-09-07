@@ -1,4 +1,6 @@
 #!/bin/bash -x
+PATH=/home/ubuntu/bin:/home/ubuntu/bin:/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH
 
 THISHOUR=$(date +%k)
 THISHOUR=${THISHOUR// /}
@@ -28,12 +30,12 @@ rm -f $HOME/playlists/defaultids
 COUNT=0
 while [ $COUNT -lt 10 ]; do
   sleep 1
-  REMAINING=$(/usr/local/bin/telnet_command.sh radio.remaining | telnet localhost 1234 | grep [0-9]\.[0-9] | grep -v Trying)
+  REMAINING=$(telnet_command.sh radio.remaining | telnet localhost 1234 | grep [0-9]\.[0-9] | grep -v Trying)
   if [ -z "$REMAINING" ]; then
     :
   elif [ ${REMAINING%.*} -gt 300 ]; then
     echo "skipping current song at `date`"
-    /usr/local/bin/telnet_command.sh radio.skip | telnet localhost 1234 &>/dev/null
+    telnet_command.sh radio.skip | telnet localhost 1234 &>/dev/null
     exit 0
   else
     echo "less than 5 minutes left in song, not skipping"

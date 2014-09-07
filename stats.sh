@@ -10,7 +10,7 @@ THISDAY=$(date +%A)
 LOGFILE=$HOME/logs/week${THISWEEK}/${THISDAY}.txt
 if [ -e $LOGFILE ]; then
   while read line; do
-    if [[ $line =~ ([0-9]{1,2}:[0-9]{1,2})\ (.*)\ ---\ (.*)\ --\ (.*)\ -\ (.*) ]]; then
+    if [[ $line =~ ([0-9]{1,2}:[0-9]{1,2})\ (.*)\ ~~~\ (.*)\ ~~\ (.*)\ ~\ (.*) ]]; then
       TIME="${BASH_REMATCH[1]}"
       SHOW="${BASH_REMATCH[2]}"
       ARTIST="${BASH_REMATCH[3]}"
